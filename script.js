@@ -44,6 +44,9 @@ class Game {
     if (colliding(this.coin.location, this.player.location)) {
       var count = document.getElementById('counter')
       count.innerText = parseInt(count.innerText) + 1
+      console.log(this.player.location)
+      this.player.location.sizeX = this.player.location.sizeX+3
+      this.player.location.sizeY = this.player.location.sizeY+3
       console.log(count)
       this.coin.update()
     }
@@ -64,7 +67,7 @@ class Game {
   }
 }
 
-console.log()
+
 class Player {
   constructor (game) {
     this.game = game
@@ -94,9 +97,9 @@ class Player {
       this.location.y += 6
     } else if (this.keyboarder.isDown(Keyboarder.KEYS.UP) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.y > 155) {
       this.location.y -= 6
-    } else if (this.keyboarder.isDown(Keyboarder.KEYS.LEFT) && this.location.x > 155) {
+    } else if (this.keyboarder.isDown(Keyboarder.KEYS.LEFT) && this.location.x > (150 + this.location.sizeX)) {
       this.location.x -= 3
-    } else if (this.keyboarder.isDown(Keyboarder.KEYS.RIGHT) && this.location.x < 440) {
+    } else if (this.keyboarder.isDown(Keyboarder.KEYS.RIGHT) && this.location.x < 440 - this.location.sizeX) {
       this.location.x += 3
     } else if (this.keyboarder.isDown(Keyboarder.KEYS.DOWN) && this.location.y < 440) {
       this.location.y += 3
