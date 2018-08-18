@@ -32,12 +32,12 @@ class Game {
 
     // put this into badcoin update
     this.badCoin.location.y += 3
-    if (this.badCoin.location.y > 450) {
+    if (this.badCoin.location.y > 430) {
       this.badCoin.update()
     }
 
     this.badCoinB.location.y -= 5
-    if (document.getElementById('counter').innerText > 5 && this.badCoinB.location.y < 155) {
+    if (document.getElementById('counter').innerText > 5 && this.badCoinB.location.y < 150) {
       this.badCoinB.update()
     }
 
@@ -70,10 +70,10 @@ class Player {
     this.screen = game.screen
     this.keyboarder = new Keyboarder()
     this.location = {
-      x: 230,
-      y: 230,
-      sizeX: 80,
-      sizeY: 20
+      x: 270,
+      y: 270,
+      sizeX: 4,
+      sizeY: 4
     }
   }
   draw () {
@@ -82,16 +82,16 @@ class Player {
     var sizeY = this.location.sizeY
     var leftX = this.location.x
     var leftY = this.location.y
-    this.screen.fillRect(leftX, leftY, sizeX, sizeY)
+    this.screen.strokeRect(leftX, leftY, sizeX, sizeY)
   }
   update () {
-    if (this.keyboarder.isDown(Keyboarder.KEYS.LEFT) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.x > 155) {
+    if (this.keyboarder.isDown(Keyboarder.KEYS.LEFT) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.x > 156) {
       this.location.x -= 7
-    } else if (this.keyboarder.isDown(Keyboarder.KEYS.RIGHT) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.x < 264) {
+    } else if (this.keyboarder.isDown(Keyboarder.KEYS.RIGHT) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.x < 440) {
       this.location.x += 7
-    } else if (this.keyboarder.isDown(Keyboarder.KEYS.DOWN) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.y < 325) {
+    } else if (this.keyboarder.isDown(Keyboarder.KEYS.DOWN) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.y < 440) {
       this.location.y += 7
-    } else if (this.keyboarder.isDown(Keyboarder.KEYS.UP) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.y > 155) {
+    } else if (this.keyboarder.isDown(Keyboarder.KEYS.UP) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.y > 156) {
       this.location.y -= 7
     } else if (this.keyboarder.isDown(Keyboarder.KEYS.LEFT) && this.location.x > 155) {
       this.location.x -= 3
