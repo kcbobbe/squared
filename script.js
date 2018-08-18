@@ -64,6 +64,7 @@ class Game {
   }
 }
 
+console.log()
 class Player {
   constructor (game) {
     this.game = game
@@ -72,8 +73,8 @@ class Player {
     this.location = {
       x: 270,
       y: 270,
-      sizeX: 4,
-      sizeY: 4
+      sizeX: 5,
+      sizeY: 5
     }
   }
   draw () {
@@ -85,19 +86,19 @@ class Player {
     this.screen.strokeRect(leftX, leftY, sizeX, sizeY)
   }
   update () {
-    if (this.keyboarder.isDown(Keyboarder.KEYS.LEFT) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.x > 156) {
-      this.location.x -= 7
+    if (this.keyboarder.isDown(Keyboarder.KEYS.LEFT) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.x > 155) {
+      this.location.x -= 6
     } else if (this.keyboarder.isDown(Keyboarder.KEYS.RIGHT) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.x < 440) {
-      this.location.x += 7
+      this.location.x += 6
     } else if (this.keyboarder.isDown(Keyboarder.KEYS.DOWN) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.y < 440) {
-      this.location.y += 7
-    } else if (this.keyboarder.isDown(Keyboarder.KEYS.UP) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.y > 156) {
-      this.location.y -= 7
+      this.location.y += 6
+    } else if (this.keyboarder.isDown(Keyboarder.KEYS.UP) && this.keyboarder.isDown(Keyboarder.KEYS.SPACE) && this.location.y > 155) {
+      this.location.y -= 6
     } else if (this.keyboarder.isDown(Keyboarder.KEYS.LEFT) && this.location.x > 155) {
       this.location.x -= 3
-    } else if (this.keyboarder.isDown(Keyboarder.KEYS.RIGHT) && this.location.x < 264) {
+    } else if (this.keyboarder.isDown(Keyboarder.KEYS.RIGHT) && this.location.x < 440) {
       this.location.x += 3
-    } else if (this.keyboarder.isDown(Keyboarder.KEYS.DOWN) && this.location.y < 325) {
+    } else if (this.keyboarder.isDown(Keyboarder.KEYS.DOWN) && this.location.y < 440) {
       this.location.y += 3
     } else if (this.keyboarder.isDown(Keyboarder.KEYS.UP) && this.location.y > 155) {
       this.location.y -= 3
@@ -115,10 +116,10 @@ class Coin {
     }
   }
   draw () {
-    this.screen.fillStyle = '#FFDD00'
+    this.screen.strokeStyle = '#FFDD00'
     var sizeX = 20
     var sizeY = 20
-    this.screen.fillRect(this.location.x, this.location.y, sizeX, sizeY)
+    this.screen.strokeRect(this.location.x, this.location.y, sizeX, sizeY)
   }
   update () {
     this.location.x = (Math.floor(Math.random() * 155)) + 155
@@ -137,10 +138,10 @@ class BadCoin {
   }
 
   draw () {
-    this.screen.fillStyle = '#FF0000'
+    this.screen.strokeStyle = '#FF0000'
     var sizeX = 20
     var sizeY = 20
-    this.screen.fillRect(this.location.x, this.location.y, sizeX, sizeY)
+    this.screen.strokeRect(this.location.x, this.location.y, sizeX, sizeY)
   }
 
   update () {
