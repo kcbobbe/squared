@@ -82,8 +82,16 @@ class Game {
 
     if (colliding(this.badCoinB.location, this.player.location)) {
       var count = document.getElementById('counter')
-      count.innerText = 0
-      console.log(count)
+      if (this.player.location.sizeX<=20){
+          this.player.location.sizeX = this.player.location.sizeX+1
+          this.player.location.sizeY = this.player.location.sizeY+1
+          // count.innerText='YOU LOSE'
+        }else{
+          this.player.location.sizeX = (this.player.location.sizeX-4)
+          this.player.location.sizeY = (this.player.location.sizeY-4)
+          count.innerText = 0
+          console.log(count)
+        }
       this.badCoinB.update()
     }
   }
@@ -138,8 +146,8 @@ class Coin {
     this.location = {
       x: (Math.floor(Math.random() * 155) + 155),
       y: ((Math.floor(Math.random() * 155)) + 155),
-      sizeX: 5,
-      sizeY: 5
+      sizeX: 20,
+      sizeY: 20
     }
   }
   draw () {
@@ -160,7 +168,9 @@ class BadCoin {
     this.screen = game.screen
     this.location = {
       x: (Math.floor(Math.random() * 155) + 155),
-      y: (0)
+      y: (0),
+      sizeX: 20,
+      sizeY: 20
     }
   }
 
@@ -183,11 +193,13 @@ class BadCoinB {
     this.screen = game.screen
     this.location = {
       x: (Math.floor(Math.random() * 155) + 155),
-      y: (500)
+      y: (500),
+      sizeX: 20,
+      sizeY: 20
     }
   }
   draw () {
-    this.screen.fillStyle = '#000055'
+    this.screen.strokeStyle = '#AAAA55'
     var sizeX = 20
     var sizeY = 20
     this.screen.strokeRect(this.location.x, this.location.y, sizeX, sizeY)
