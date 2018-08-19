@@ -42,17 +42,34 @@ class Game {
     }
 
     if (colliding(this.coin.location, this.player.location)) {
-      var count = document.getElementById('counter')
-      count.innerText = parseInt(count.innerText) + 1
-      console.log(this.player.location)
-      this.player.location.sizeX = this.player.location.sizeX+3
-      this.player.location.sizeY = this.player.location.sizeY+3
-      console.log(count)
-      this.coin.update()
+      if (this.coin.location.sizeX < this.player.location.sizeX){
+        console.log('the coin is bigger')
+        var count = document.getElementById('counter')
+        count.innerText = parseInt(count.innerText) + 1
+        console.log(this.player.location)
+        if (this.player.location.sizeX>295){
+          count.innerText='YOU WIN'
+          break
+        }
+        this.player.location.sizeX = this.player.location.sizeX+3
+        this.player.location.sizeY = this.player.location.sizeY+3
+        console.log(count)
+        this.coin.update()
+      }else{
+        var count = document.getElementById('counter')
+        count.innerText = 0
+        console.log(count)
+        this.coin.update()
+
+      }
     }
+      
 
     if (colliding(this.badCoin.location, this.player.location)) {
       var count = document.getElementById('counter')
+              this.player.location.sizeX = this.player.location.sizeX+3
+        this.player.location.sizeY = this.player.location.sizeY+3
+
       count.innerText = 0
       console.log(count)
       this.badCoin.update()
@@ -115,7 +132,9 @@ class Coin {
     this.screen = game.screen
     this.location = {
       x: (Math.floor(Math.random() * 155) + 155),
-      y: ((Math.floor(Math.random() * 155)) + 155)
+      y: ((Math.floor(Math.random() * 155)) + 155),
+      sizeX: 5,
+      sizeY: 5
     }
   }
   draw () {
