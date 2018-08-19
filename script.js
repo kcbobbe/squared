@@ -10,7 +10,7 @@ class Game {
   }
   draw () {
     this.screen.clearRect(0, 0, this.canvas.width, this.canvas.height)
-    this.screen.strokeStyle = '#FF0000'
+    this.screen.strokeStyle = '#FFaaaa'
     this.screen.lineWidth = 1
     this.screen.strokeRect(150, 150, 300, 300)
     this.player.draw()
