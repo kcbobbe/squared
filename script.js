@@ -35,8 +35,11 @@ class Game {
     if (this.badCoin.location.y > 430) {
       this.badCoin.update()
     }
-
-    this.badCoinB.location.y -= 2
+    if (this.player.location.sizeX>20){
+      this.badCoinB.location.y -= 7
+    } else {
+      this.badCoinB.location.y -= 2
+    }
     if (this.badCoinB.location.y < 150) {
       this.badCoinB.update()
     }
@@ -82,7 +85,7 @@ class Game {
 
     if (colliding(this.badCoinB.location, this.player.location)) {
       var count = document.getElementById('counter')
-      if (this.player.location.sizeX<=20){
+      if (this.player.location.sizeX<19){
           this.player.location.sizeX = this.player.location.sizeX+1
           this.player.location.sizeY = this.player.location.sizeY+1
           // count.innerText='YOU LOSE'
@@ -191,6 +194,7 @@ class BadCoinB {
   constructor (game) {
     this.game = game
     this.screen = game.screen
+    this.player = game.player
     this.location = {
       x: (Math.floor(Math.random() * 155) + 155),
       y: (500),
@@ -199,7 +203,12 @@ class BadCoinB {
     }
   }
   draw () {
+    if(this.player.location.sizeX>=20){
+      this.screen.strokeStyle= '#FFAAFF'
+    } else {
+      
     this.screen.strokeStyle = '#AAAA55'
+    }
     var sizeX = 20
     var sizeY = 20
     this.screen.strokeRect(this.location.x, this.location.y, sizeX, sizeY)
