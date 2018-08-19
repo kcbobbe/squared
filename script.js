@@ -31,40 +31,46 @@ class Game {
     this.player.update()
 
     // put this into badcoin update
-    this.badCoin.location.y += 3
-    if (this.badCoin.location.y > 430) {
-      this.badCoin.update()
-    }
-    if (this.player.location.sizeX>20){
-      this.badCoinB.location.y -= 7
-    } else {
-      this.badCoinB.location.y -= 2
-    }
-    if (this.badCoinB.location.y < 150) {
-      this.badCoinB.update()
-    }
-
-    if (colliding(this.coin.location, this.player.location)) {
-      if (this.coin.location.sizeX < this.player.location.sizeX){
+      if (this.player.location.sizeX>295){
         var count = document.getElementById('counter')
-        // count.innerText = parseInt(count.innerText) + 1
-        // console.log(this.player.location)
-          if (this.player.location.sizeX>295){
-            count.innerText='YOU WIN'
+        count.innerText='YOU WIN'
+      } else if (this.player.location.sizeX<1){
+        var count = document.getElementById('counter')
+        count.innerText='YOU LOSE'
+  }else{
+        this.badCoin.location.y += 3
+        if (this.badCoin.location.y > 430) {
+          this.badCoin.update()
+        }
+        if (this.player.location.sizeX>20){
+          this.badCoinB.location.y -= 7
+        } else {
+          this.badCoinB.location.y -= 2
+        }
+        if (this.badCoinB.location.y < 150) {
+          this.badCoinB.update()
+        }
+
+        if (colliding(this.coin.location, this.player.location)) {
+          if (this.coin.location.sizeX < this.player.location.sizeX){
+            var count = document.getElementById('counter')
+            // count.innerText = parseInt(count.innerText) + 1
+            // console.log(this.player.location)
+
+              this.player.location.sizeX = this.player.location.sizeX+3
+              this.player.location.sizeY = this.player.location.sizeY+3
+              console.log(count)
+              this.coin.update()
+              }
           }else{
-          this.player.location.sizeX = this.player.location.sizeX+3
-          this.player.location.sizeY = this.player.location.sizeY+3
-          console.log(count)
-          this.coin.update()
-          }
-      }else{
-        var count = document.getElementById('counter')
-        // count.innerText = 0
-        console.log(count)
-        // this.coin.update()
+            var count = document.getElementById('counter')
+            // count.innerText = 0
+            console.log(count)
+            // this.coin.update()
 
-      }
-    }
+          }
+        
+  
       
 
     if (colliding(this.badCoin.location, this.player.location)) {
@@ -72,7 +78,7 @@ class Game {
         if (this.player.location.sizeX<=1){
           this.player.location.sizeX = this.player.location.sizeX-1
         this.player.location.sizeY = this.player.location.sizeY-1
-          count.innerText='YOU LOSE'
+          // count.innerText='YOU LOSE'
         }else{
         this.player.location.sizeX = this.player.location.sizeX-1
         this.player.location.sizeY = this.player.location.sizeY-1
@@ -97,6 +103,7 @@ class Game {
       this.badCoinB.update()
     }
   }
+}
 }
 
 
