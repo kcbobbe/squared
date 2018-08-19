@@ -31,7 +31,7 @@ class Game {
     this.player.update()
 
     // put this into badcoin update
-      if (this.player.location.sizeX>295){
+      if (this.player.location.sizeX>=299){
         var count = document.getElementById('counter')
         count.innerText='YOU WIN'
       } else if (this.player.location.sizeX<1){
@@ -153,8 +153,8 @@ class Coin {
     this.game = game
     this.screen = game.screen
     this.location = {
-      x: (Math.floor(Math.random() * 155) + 155),
-      y: ((Math.floor(Math.random() * 155)) + 155),
+      x: (Math.floor(Math.random() * 290) + 155),
+      y: ((Math.floor(Math.random() * 290)) + 155),
       sizeX: 20,
       sizeY: 20
     }
@@ -166,8 +166,8 @@ class Coin {
     this.screen.strokeRect(this.location.x, this.location.y, sizeX, sizeY)
   }
   update () {
-    this.location.x = (Math.floor(Math.random() * 155)) + 155
-    this.location.y = (Math.floor(Math.random() * 155)) + 155
+    this.location.x = (Math.floor(Math.random() * 290)) + 155
+    this.location.y = (Math.floor(Math.random() * 290)) + 155
   }
 }
 
@@ -176,7 +176,7 @@ class BadCoin {
     this.game = game
     this.screen = game.screen
     this.location = {
-      x: (Math.floor(Math.random() * 155) + 155),
+      x: (Math.floor(Math.random() * 290) + 155),
       y: (0),
       sizeX: 20,
       sizeY: 20
@@ -191,7 +191,7 @@ class BadCoin {
   }
 
   update () {
-    this.location.x = (Math.floor(Math.random() * 155)) + 155
+    this.location.x = (Math.floor(Math.random() * 290)) + 155
     this.location.y = (0)
   }
 }
@@ -202,7 +202,7 @@ class BadCoinB {
     this.screen = game.screen
     this.player = game.player
     this.location = {
-      x: (Math.floor(Math.random() * 155) + 155),
+      x: (Math.floor(Math.random() * 290) + 155),
       y: (500),
       sizeX: 20,
       sizeY: 20
@@ -220,7 +220,7 @@ class BadCoinB {
     this.screen.strokeRect(this.location.x, this.location.y, sizeX, sizeY)
   }
   update () {
-    this.location.x = (Math.floor(Math.random() * 155)) + 155
+    this.location.x = (Math.floor(Math.random() * 290)) + 155
     this.location.y = (500)
   }
 }
