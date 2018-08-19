@@ -16,9 +16,9 @@ class Game {
     this.player.draw()
     this.coin.draw()
     this.badCoin.draw()
-    if (document.getElementById('counter').innerText > 5) {
+    // if (document.getElementById('counter').innerText > 5) {
       this.badCoinB.draw()
-    }
+    // }
   }
 
   tick () {
@@ -36,8 +36,8 @@ class Game {
       this.badCoin.update()
     }
 
-    this.badCoinB.location.y -= 5
-    if (document.getElementById('counter').innerText > 5 && this.badCoinB.location.y < 150) {
+    this.badCoinB.location.y -= 2
+    if (this.badCoinB.location.y < 150) {
       this.badCoinB.update()
     }
 
@@ -47,14 +47,14 @@ class Game {
         var count = document.getElementById('counter')
         count.innerText = parseInt(count.innerText) + 1
         console.log(this.player.location)
-        if (this.player.location.sizeX>295){
-          count.innerText='YOU WIN'
-          break
-        }
-        this.player.location.sizeX = this.player.location.sizeX+3
-        this.player.location.sizeY = this.player.location.sizeY+3
-        console.log(count)
-        this.coin.update()
+          if (this.player.location.sizeX>295){
+            count.innerText='YOU WIN'
+          }else{
+          this.player.location.sizeX = this.player.location.sizeX+3
+          this.player.location.sizeY = this.player.location.sizeY+3
+          console.log(count)
+          this.coin.update()
+          }
       }else{
         var count = document.getElementById('counter')
         count.innerText = 0
@@ -67,11 +67,16 @@ class Game {
 
     if (colliding(this.badCoin.location, this.player.location)) {
       var count = document.getElementById('counter')
-              this.player.location.sizeX = this.player.location.sizeX+3
-        this.player.location.sizeY = this.player.location.sizeY+3
-
-      count.innerText = 0
-      console.log(count)
+        if (this.player.location.sizeX<=1){
+          this.player.location.sizeX = this.player.location.sizeX-1
+        this.player.location.sizeY = this.player.location.sizeY-1
+          count.innerText='YOU LOSE'
+        }else{
+        this.player.location.sizeX = this.player.location.sizeX-1
+        this.player.location.sizeY = this.player.location.sizeY-1
+        count.innerText = 0
+        console.log(count)
+        }
       this.badCoin.update()
     }
 
@@ -182,10 +187,10 @@ class BadCoinB {
     }
   }
   draw () {
-    this.screen.fillStyle = '#FF0000'
+    this.screen.fillStyle = '#000055'
     var sizeX = 20
     var sizeY = 20
-    this.screen.fillRect(this.location.x, this.location.y, sizeX, sizeY)
+    this.screen.strokeRect(this.location.x, this.location.y, sizeX, sizeY)
   }
   update () {
     this.location.x = (Math.floor(Math.random() * 155)) + 155
