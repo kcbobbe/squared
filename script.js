@@ -85,7 +85,7 @@ class Game {
 
     if (colliding(this.badCoinB.location, this.player.location)) {
       var count = document.getElementById('counter')
-      if (this.player.location.sizeX<19){
+      if (this.player.location.sizeX<21){
           this.player.location.sizeX = this.player.location.sizeX+1
           this.player.location.sizeY = this.player.location.sizeY+1
           // count.innerText='YOU LOSE'
@@ -114,7 +114,7 @@ class Player {
     }
   }
   draw () {
-    this.screen.fillStyle = '#FF8800'
+    this.screen.strokeStyle = '#FFFFFF'
     var sizeX = this.location.sizeX
     var sizeY = this.location.sizeY
     var leftX = this.location.x
@@ -203,11 +203,11 @@ class BadCoinB {
     }
   }
   draw () {
-    if(this.player.location.sizeX>=20){
-      this.screen.strokeStyle= '#FFAAFF'
+    if(this.player.location.sizeX>20){
+      this.screen.strokeStyle= '#FF0000'
     } else {
       
-    this.screen.strokeStyle = '#AAAA55'
+    this.screen.strokeStyle = '#00FF00'
     }
     var sizeX = 20
     var sizeY = 20
