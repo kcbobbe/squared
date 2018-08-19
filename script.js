@@ -46,10 +46,9 @@ class Game {
 
     if (colliding(this.coin.location, this.player.location)) {
       if (this.coin.location.sizeX < this.player.location.sizeX){
-        console.log('the coin is bigger')
         var count = document.getElementById('counter')
-        count.innerText = parseInt(count.innerText) + 1
-        console.log(this.player.location)
+        // count.innerText = parseInt(count.innerText) + 1
+        // console.log(this.player.location)
           if (this.player.location.sizeX>295){
             count.innerText='YOU WIN'
           }else{
@@ -60,9 +59,9 @@ class Game {
           }
       }else{
         var count = document.getElementById('counter')
-        count.innerText = 0
+        // count.innerText = 0
         console.log(count)
-        this.coin.update()
+        // this.coin.update()
 
       }
     }
@@ -77,7 +76,7 @@ class Game {
         }else{
         this.player.location.sizeX = this.player.location.sizeX-1
         this.player.location.sizeY = this.player.location.sizeY-1
-        count.innerText = 0
+        // count.innerText = 0
         console.log(count)
         }
       this.badCoin.update()
@@ -92,7 +91,7 @@ class Game {
         }else{
           this.player.location.sizeX = (this.player.location.sizeX-4)
           this.player.location.sizeY = (this.player.location.sizeY-4)
-          count.innerText = 0
+          // count.innerText = 0
           console.log(count)
         }
       this.badCoinB.update()
